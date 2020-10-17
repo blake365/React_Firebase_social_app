@@ -11,7 +11,7 @@ const isEmail = email => {
 }
 
 //signup validations
-exports.validateSignUpData = data => {
+exports.validateSignupData = data => {
   let errors = {}
 
   if (isEmpty(data.email)) {
@@ -21,9 +21,8 @@ exports.validateSignUpData = data => {
   }
 
   if (isEmpty(data.password)) errors.password = 'Must not be empty'
-  if (data.password !== data.confirmPassword) {
+  if (data.password !== data.confirmPassword)
     errors.confirmPassword = 'Passwords must match'
-  }
   if (isEmpty(data.handle)) errors.handle = 'Must not be empty'
 
   return {
