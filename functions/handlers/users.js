@@ -108,7 +108,7 @@ exports.getUserDetails = (req, res) => {
         return db
           .collection('screams')
           .where('userHandle', '==', req.params.handle)
-          .orderBy('createdAt', desc)
+          .orderBy('createdAt', 'desc')
           .get()
       } else {
         return res.status(404).json({ error: 'User not found' })
@@ -157,7 +157,7 @@ exports.getAuthenticatedUser = (req, res) => {
       return db
         .collection('notifications')
         .where('recipient', '==', req.user.handle)
-        .orderBy('createdAt', desc)
+        .orderBy('createdAt', 'desc')
         .limit(10)
         .get()
     })
