@@ -4,6 +4,8 @@ import {
   LIKE_SCREAM,
   UNLIKE_SCREAM,
   LOADING_DATA,
+  DELETE_SCREAM,
+  POST_SCREAM,
 } from '../types'
 
 const initialState = {
@@ -28,11 +30,24 @@ const dataReducer = (state = initialState, actions) => {
     case LIKE_SCREAM:
     case UNLIKE_SCREAM:
       let index = state.screams.findIndex(
-        scream => scream.screamId === actions.payload.screamId
+        scream => scream.screamId === actions.payload.id
       )
       state.screams[index] = actions.payload
       return {
         ...state,
+      }
+    case DELETE_SCREAM:
+      index = state.screams.findIndex(
+        scream => scream.screamId === actions.payload
+      )
+      state.screams.splice(index, 1)
+      return {
+        ...state,
+      }
+    case POST_SCREAM:
+      return {
+        ...state,
+        screams: [actions.payload, ...state.screams],
       }
     default:
       return state

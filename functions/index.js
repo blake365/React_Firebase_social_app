@@ -133,7 +133,7 @@ exports.onUserImageChange = functions.firestore
   })
 
 exports.onScreamDelete = functions.firestore
-  .document('screams/{scremId}')
+  .document('screams/{screamId}')
   .onDelete((snapshot, context) => {
     const screamId = context.params.screamId
     const batch = db.batch()
