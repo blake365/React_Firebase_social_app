@@ -14,8 +14,8 @@ const initialState = {
   loading: false,
 }
 
-const dataReducer = (state = initialState, actions) => {
-  switch (actions.type) {
+const dataReducer = (state = initialState, action) => {
+  switch (action.type) {
     case LOADING_DATA:
       return {
         ...state,
@@ -24,21 +24,24 @@ const dataReducer = (state = initialState, actions) => {
     case SET_SCREAMS:
       return {
         ...state,
-        screams: actions.payload,
+        screams: action.payload,
         loading: false,
       }
     case LIKE_SCREAM:
     case UNLIKE_SCREAM:
       let index = state.screams.findIndex(
-        scream => scream.screamId === actions.payload.id
+        scream => scream.screamId === action.payload.id
       )
-      state.screams[index] = actions.payload
+      state.screams[index] = action.payload
+      if (state.scream.screamId === action.payload.screamId) {
+        state.scream = action.payload
+      }
       return {
         ...state,
       }
     case DELETE_SCREAM:
       index = state.screams.findIndex(
-        scream => scream.screamId === actions.payload
+        scream => scream.screamId === action.payload
       )
       state.screams.splice(index, 1)
       return {
@@ -47,8 +50,14 @@ const dataReducer = (state = initialState, actions) => {
     case POST_SCREAM:
       return {
         ...state,
-        screams: [actions.payload, ...state.screams],
+        screams: [action.payload, ...state.screams],
       }
+    case SET_SCREAM: {
+      return {
+        ...state,
+        scream: action.payload,
+      }
+    }
     default:
       return state
   }

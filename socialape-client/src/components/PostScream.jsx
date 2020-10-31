@@ -14,7 +14,7 @@ import Close from '@material-ui/icons/Close'
 
 import MyButton from '../util/MyButton'
 
-import { postScream } from '../redux/actions/dataActions'
+import { postScream, clearErrors } from '../redux/actions/dataActions'
 
 import { connect } from 'react-redux'
 
@@ -22,14 +22,16 @@ const styles = theme => ({
   ...theme.spreadThis,
   submitButton: {
     position: 'relative',
+    float: 'right',
+    marginTop: 10,
   },
   progressSpinner: {
     position: 'absolute',
   },
   closeButton: {
     position: 'absolute',
-    top: '10%',
-    left: '90%',
+    top: '6%',
+    left: '91%',
   },
 })
 
@@ -56,6 +58,7 @@ class PostScream extends Component {
   }
 
   handleClose = () => {
+    this.props.clearErrors()
     this.setState({ open: false, errors: {} })
   }
 
@@ -136,12 +139,13 @@ class PostScream extends Component {
 PostScream.propTypes = {
   postScream: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   UI: state.UI,
 })
 
-export default connect(mapStateToProps, { postScream })(
+export default connect(mapStateToProps, { postScream, clearErrors })(
   withStyles(styles)(PostScream)
 )
