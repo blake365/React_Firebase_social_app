@@ -18,17 +18,16 @@ import Close from '@material-ui/icons/Close'
 import UnfoldMore from '@material-ui/icons/UnfoldMore'
 
 import { connect } from 'react-redux'
-import { getScream } from '../redux/actions/dataActions'
+import { getScream, clearErrors } from '../../redux/actions/dataActions'
 
-import MyButton from '../util/MyButton'
+import MyButton from '../../util/MyButton'
 import LikeButton from './LikeButton'
+import Comments from './Comments'
+import CommentForm from './CommentForm'
 
 const styles = theme => ({
   ...theme.spreadThis,
-  invisibleSeparator: {
-    border: 'none',
-    margin: 4,
-  },
+
   profileImage: {
     maxWidth: 200,
     hieght: 200,
@@ -63,6 +62,7 @@ class ScreamDialog extends Component {
   }
   handleClose = () => {
     this.setState({ open: false })
+    this.props.clearErrors()
   }
 
   render() {
@@ -76,6 +76,7 @@ class ScreamDialog extends Component {
         commentCount,
         userImage,
         userHandle,
+        comments,
       },
       UI: { loading },
     } = this.props
@@ -111,6 +112,9 @@ class ScreamDialog extends Component {
           </MyButton>
           <span>{commentCount} Comments</span>
         </Grid>
+        <hr className={classes.visibleSeparator} />
+        <CommentForm screamId={screamId} />
+        <Comments comments={comments} />
       </Grid>
     )
 
@@ -152,6 +156,7 @@ ScreamDialog.propTypes = {
   userHandle: PropTypes.string.isRequired,
   scream: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -161,6 +166,7 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   getScream,
+  clearErrors,
 }
 
 export default connect(

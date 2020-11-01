@@ -12,9 +12,9 @@ import CircularProgrss from '@material-ui/core/CircularProgress'
 import AddIcon from '@material-ui/icons/Add'
 import Close from '@material-ui/icons/Close'
 
-import MyButton from '../util/MyButton'
+import MyButton from '../../util/MyButton'
 
-import { postScream, clearErrors } from '../redux/actions/dataActions'
+import { postScream, clearErrors } from '../../redux/actions/dataActions'
 
 import { connect } from 'react-redux'
 

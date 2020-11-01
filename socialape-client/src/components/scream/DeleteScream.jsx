@@ -14,9 +14,9 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DeleteIcon from '@material-ui/icons/DeleteOutline'
 
-import MyButton from '../util/MyButton'
+import MyButton from '../../util/MyButton'
 
-import { deleteScream } from '../redux/actions/dataActions'
+import { deleteScream } from '../../redux/actions/dataActions'
 
 const styles = {
   deleteButton: {},

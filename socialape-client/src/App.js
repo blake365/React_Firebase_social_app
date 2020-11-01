@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 //redux
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from './redux/types'
+import { SET_AUTHENTICATED } from './redux/types'
 import { logoutUser, getUserData } from './redux/actions/userActions'
 
 import './App.css'
@@ -15,10 +15,10 @@ import themeFile from './util/theme'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import home from './pages/home'
+import user from './pages/user'
 import login from './pages/login'
 import signup from './pages/signup'
-import NavBar from './components/Navbar'
-
+import Navbar from './components/layout/Navbar'
 import AuthRoute from './util/AuthRoute'
 import axios from 'axios'
 
@@ -44,12 +44,13 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
           <Router>
-            <NavBar />
+            <Navbar />
             <div className='container'>
               <Switch>
                 <Route exact path='/' component={home} />
                 <AuthRoute exact path='/login' component={login} />
                 <AuthRoute exact path='/signup' component={signup} />
+                <Route exact path='/users/:handle' component={user} />
               </Switch>
             </div>
           </Router>

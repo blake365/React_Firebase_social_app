@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Grid } from '@material-ui/core'
-import Scream from '../components/Scream.jsx'
-import Profile from '../components/Profile.jsx'
+import Scream from '../components/scream/Scream.jsx'
+import Profile from '../components/profile/Profile.jsx'
 
 import { connect } from 'react-redux'
 import { getScreams } from '../redux/actions/dataActions'

@@ -17,7 +17,7 @@ import Avatar from '@material-ui/core/Avatar'
 
 import ChatIcon from '@material-ui/icons/Chat'
 
-import MyButton from '../util/MyButton'
+import MyButton from '../../util/MyButton'
 import ScreamDialog from './ScreamDialog'
 import DeleteScream from './DeleteScream'
 import LikeButton from './LikeButton'

@@ -16,10 +16,10 @@ import CalendarToday from '@material-ui/icons/CalendarToday'
 import EditIcon from '@material-ui/icons/Edit'
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn'
 
-import MyButton from '../util/MyButton'
+import MyButton from '../../util/MyButton'
 
 import { connect } from 'react-redux'
-import { uploadImage, logoutUser } from '../redux/actions/userActions'
+import { uploadImage, logoutUser } from '../../redux/actions/userActions'
 
 const styles = theme => ({
   ...theme.spreadThis,

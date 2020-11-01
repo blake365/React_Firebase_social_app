@@ -11,9 +11,9 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 import EditIcon from '@material-ui/icons/Edit'
 
-import MyButton from '../util/MyButton'
+import MyButton from '../../util/MyButton'
 
-import { editUserDetails } from '../redux/actions/userActions'
+import { editUserDetails } from '../../redux/actions/userActions'
 
 import { connect } from 'react-redux'
 
