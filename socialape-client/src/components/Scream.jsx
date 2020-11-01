@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom'
 
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
+import Avatar from '@material-ui/core/Avatar'
 
 import ChatIcon from '@material-ui/icons/Chat'
 
@@ -21,18 +21,16 @@ import MyButton from '../util/MyButton'
 import ScreamDialog from './ScreamDialog'
 import DeleteScream from './DeleteScream'
 import LikeButton from './LikeButton'
+import { CardActions, CardHeader } from '@material-ui/core'
+import MuiLink from '@material-ui/core/Link'
 
 const styles = {
   card: {
-    position: 'relative',
-    display: 'flex',
     marginBottom: 20,
   },
-  image: {
-    minWidth: 200,
-  },
+  image: {},
   content: {
-    padding: 25,
+    padding: '0px 20px 0px 20px',
     objectFit: 'cover',
   },
 }
@@ -64,25 +62,31 @@ export class Scream extends Component {
 
     return (
       <Card className={classes.card}>
-        <CardMedia
-          image={userImage}
-          title='Profile Image'
-          className={classes.image}
+        <CardHeader
+          avatar={
+            <Avatar
+              src={userImage}
+              alt='Profile Image'
+              className={classes.image}
+            />
+          }
+          action={deleteButton}
+          title={
+            <MuiLink
+              component={Link}
+              to={`/users/${userHandle}`}
+              color='primary'
+              variant='body1'
+            >
+              @{userHandle}
+            </MuiLink>
+          }
+          subheader={dayjs(createdAt).fromNow()}
         />
         <CardContent className={classes.content}>
-          <Typography
-            variant='h5'
-            component={Link}
-            to={`/users/${userHandle}`}
-            color='primary'
-          >
-            {userHandle}
-          </Typography>
-          {deleteButton}
-          <Typography variant='body2' color='textSecondary'>
-            {dayjs(createdAt).fromNow()}
-          </Typography>
           <Typography variant='body1'>{body}</Typography>
+        </CardContent>
+        <CardActions disableSpacing>
           <LikeButton screamId={screamId} />
           <span>{likeCount}</span>
           <MyButton tip='Comments'>
@@ -90,7 +94,7 @@ export class Scream extends Component {
           </MyButton>
           <span>{commentCount}</span>
           <ScreamDialog screamId={screamId} userHandle={userHandle} />
-        </CardContent>
+        </CardActions>
       </Card>
     )
   }

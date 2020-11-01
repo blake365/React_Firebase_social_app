@@ -7,6 +7,7 @@ import {
   SET_UNAUTHENTICATED,
 } from '../types'
 import axios from 'axios'
+import { getScreams } from './dataActions'
 
 // login user
 export const loginUser = (userData, history) => dispatch => {
@@ -79,6 +80,9 @@ export const uploadImage = formData => dispatch => {
     .post(`/user/image`, formData)
     .then(() => {
       dispatch(getUserData())
+    })
+    .then(() => {
+      dispatch(getScreams())
     })
     .catch(err => console.log(err))
 }

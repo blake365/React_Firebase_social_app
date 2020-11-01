@@ -6,11 +6,8 @@ import dayjs from 'dayjs'
 
 import { Link } from 'react-router-dom'
 
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogTitle from '@material-ui/core/DialogTitle'
 import CircularProgrss from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
@@ -46,8 +43,7 @@ const styles = theme => ({
     left: '90%',
   },
   expandButton: {
-    position: 'absolute',
-    left: '90%',
+    marginLeft: 'auto',
   },
   spinnerDiv: {
     textAlign: 'center',
@@ -127,6 +123,7 @@ class ScreamDialog extends Component {
         >
           <UnfoldMore color='primary' />
         </MyButton>
+
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

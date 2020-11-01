@@ -55,7 +55,7 @@ class Profile extends Component {
 
     let ProfileMarkup = !loading ? (
       authenticated ? (
-        <Paper className={classes.paper}>
+        <Paper elevation={2} className={classes.paper}>
           <div className={classes.profile}>
             <div className='image-wrapper'>
               <img src={imageUrl} alt='profile' className='profile-image' />
@@ -106,11 +106,13 @@ class Profile extends Component {
               <CalendarToday color='primary' />
               <span> Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
+
+            <hr />
+            <MyButton tip='Logout' onClick={this.handleLogout}>
+              <KeyboardReturn color='primary' />
+            </MyButton>
+            <EditDetails />
           </div>
-          <MyButton tip='Logout' onClick={this.handleLogout}>
-            <KeyboardReturn color='primary' />
-          </MyButton>
-          <EditDetails />
         </Paper>
       ) : (
         <Paper className={classes.paper}>

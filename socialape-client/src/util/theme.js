@@ -48,7 +48,7 @@ const theme = {
       color: 'white',
     },
     paper: {
-      padding: 20,
+      padding: '10px 10px 0px 10px',
     },
     profile: {
       '& .image-wrapper': {

@@ -19,11 +19,7 @@ import MyButton from '../util/MyButton'
 import { deleteScream } from '../redux/actions/dataActions'
 
 const styles = {
-  deleteButton: {
-    position: 'absolute',
-    top: '10%',
-    left: '90%',
-  },
+  deleteButton: {},
 }
 
 class DeleteScream extends Component {

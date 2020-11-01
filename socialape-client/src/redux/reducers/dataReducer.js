@@ -30,7 +30,7 @@ const dataReducer = (state = initialState, action) => {
     case LIKE_SCREAM:
     case UNLIKE_SCREAM:
       let index = state.screams.findIndex(
-        scream => scream.screamId === action.payload.id
+        scream => scream.screamId === action.payload.screamId
       )
       state.screams[index] = action.payload
       if (state.scream.screamId === action.payload.screamId) {
@@ -40,10 +40,10 @@ const dataReducer = (state = initialState, action) => {
         ...state,
       }
     case DELETE_SCREAM:
-      index = state.screams.findIndex(
+      let deleteIndex = state.screams.findIndex(
         scream => scream.screamId === action.payload
       )
-      state.screams.splice(index, 1)
+      state.screams.splice(deleteIndex, 1)
       return {
         ...state,
       }
