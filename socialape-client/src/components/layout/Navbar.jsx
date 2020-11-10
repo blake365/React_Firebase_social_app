@@ -10,10 +10,11 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import HomeIcon from '@material-ui/icons/Home'
-import Notifications from '@material-ui/icons/Notifications'
+// import NotificationsIcon from '@material-ui/icons/Notifications'
 
 import MyButton from '../../util/MyButton'
 import PostScream from '../scream/PostScream'
+import Notifications from './Notifications'
 
 export class Navbar extends Component {
   render() {
@@ -29,9 +30,8 @@ export class Navbar extends Component {
                   <HomeIcon />
                 </MyButton>
               </Link>
-              <MyButton tip='Notifications'>
-                <Notifications />
-              </MyButton>
+
+              <Notifications />
             </Fragment>
           ) : (
             <Fragment>
