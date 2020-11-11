@@ -56,10 +56,19 @@ class ScreamDialog extends Component {
     open: false,
     oldPath: '',
     newPath: '',
+    getScreamData: false,
   }
 
   componentDidMount() {
-    if (this.props.openDialog) {
+    if (this.props.openDialog && !this.state.getScreamData) {
+      this.setState({ getScreamData: true })
+      this.handleOpen()
+    }
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.openDialog && !this.state.getScreamData) {
+      this.setState({ getScreamData: true })
       this.handleOpen()
     }
   }
@@ -68,13 +77,17 @@ class ScreamDialog extends Component {
     let oldPath = window.location.pathname
 
     const { userHandle, screamId } = this.props
+    console.log(this.props.screamId)
     const newPath = `/users/${userHandle}/scream/${screamId}`
+
     if (oldPath === newPath) oldPath = `/users/${userHandle}`
+
     window.history.pushState(null, null, newPath)
 
     this.setState({ open: true, oldPath, newPath })
     this.props.getScream(this.props.screamId)
   }
+
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath)
     this.setState({ open: false })

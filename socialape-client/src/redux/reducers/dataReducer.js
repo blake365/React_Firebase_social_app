@@ -28,6 +28,12 @@ const dataReducer = (state = initialState, action) => {
         screams: action.payload,
         loading: false,
       }
+    case SET_SCREAM: {
+      return {
+        ...state,
+        scream: action.payload,
+      }
+    }
     case LIKE_SCREAM:
     case UNLIKE_SCREAM:
       let index = state.screams.findIndex(
@@ -35,7 +41,7 @@ const dataReducer = (state = initialState, action) => {
       )
       state.screams[index] = action.payload
       if (state.scream.screamId === action.payload.screamId) {
-        state.scream = action.payload
+        state.scream = { ...state.scream, ...action.payload }
       }
       return {
         ...state,
@@ -53,17 +59,12 @@ const dataReducer = (state = initialState, action) => {
         ...state,
         screams: [action.payload, ...state.screams],
       }
-    case SET_SCREAM: {
-      return {
-        ...state,
-        scream: action.payload,
-      }
-    }
     case SUBMIT_COMMENT: {
       return {
         ...state,
         scream: {
           ...state.scream,
+          commentCount: state.scream.commentCount + 1,
           comments: [action.payload, ...state.scream.comments],
         },
       }

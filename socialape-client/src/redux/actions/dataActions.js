@@ -99,9 +99,11 @@ export const clearErrors = () => dispatch => {
 
 export const getScream = screamId => dispatch => {
   dispatch({ type: LOADING_UI })
+  console.log(screamId)
   axios
-    .get(`scream/${screamId}`)
+    .get(`/scream/${screamId}`)
     .then(res => {
+      console.log(res.data)
       dispatch({
         type: SET_SCREAM,
         payload: res.data,
@@ -119,7 +121,22 @@ export const submitComment = (screamId, commentData) => dispatch => {
         type: SUBMIT_COMMENT,
         payload: res.data,
       })
-      dispatch(clearErrors())
+      axios
+        .get('/screams')
+        .then(res => {
+          dispatch({
+            type: SET_SCREAMS,
+            payload: res.data,
+          })
+          dispatch(clearErrors())
+        })
+        .catch(err => {
+          dispatch({
+            type: SET_SCREAMS,
+            payload: [],
+          })
+        })
+      //dispatch(getScreams())
     })
     .catch(err => {
       dispatch({

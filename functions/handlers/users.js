@@ -99,7 +99,7 @@ exports.login = (req, res) => {
 
 //get any users details
 exports.getUserDetails = (req, res) => {
-  let userData = []
+  let userData = {}
   db.doc(`/users/${req.params.handle}`)
     .get()
     .then(doc => {

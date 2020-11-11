@@ -57,7 +57,7 @@ class Notifications extends Component {
               }
               color='secondary'
             >
-              <NotificationsIcon />{' '}
+              <NotificationsIcon />
             </Badge>
           ))
         : (notificationIcon = <NotificationsIcon />)
@@ -68,6 +68,7 @@ class Notifications extends Component {
     let notificationsMarkup =
       notifications && notifications.length > 0 ? (
         notifications.map(note => {
+          // console.log(note.screamId)
           const verb = note.type === 'like' ? 'liked' : 'commented on'
           const time = dayjs(note.createdAt).fromNow()
           const iconColor = note.read ? 'primary' : 'secondary'

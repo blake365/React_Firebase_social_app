@@ -14,6 +14,7 @@ class user extends Component {
     profile: null,
     screamIdParam: null,
   }
+
   componentDidMount() {
     const screamId = this.props.match.params.screamId
     const handle = this.props.match.params.handle
@@ -29,6 +30,13 @@ class user extends Component {
         })
       })
       .catch(err => console.log(err))
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.match !== this.props.match) {
+      const screamId = nextProps.match.params.screamId
+      if (screamId) this.setState({ screamIdParam: screamId, openDialog: true })
+    }
   }
 
   render() {
