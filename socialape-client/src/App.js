@@ -22,6 +22,9 @@ import Navbar from './components/layout/Navbar'
 import AuthRoute from './util/AuthRoute'
 import axios from 'axios'
 
+axios.defaults.baseURL =
+  'https://us-central1-socialapes-20bf7.cloudfunctions.net/api'
+
 const theme = createMuiTheme(themeFile)
 
 const token = localStorage.FBIdToken

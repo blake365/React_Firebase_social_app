@@ -17,6 +17,7 @@ import EditIcon from '@material-ui/icons/Edit'
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn'
 
 import MyButton from '../../util/MyButton'
+import ProfileSkeleton from '../../util/ProfileSkeleton'
 
 import { connect } from 'react-redux'
 import { uploadImage, logoutUser } from '../../redux/actions/userActions'
@@ -140,7 +141,7 @@ class Profile extends Component {
         </Paper>
       )
     ) : (
-      <p>loading...</p>
+      <ProfileSkeleton />
     )
 
     return ProfileMarkup

@@ -1,4 +1,6 @@
 const functions = require('firebase-functions')
+const cors = require('cors')
+
 const {
   getAllScreams,
   postOneScream,
@@ -25,6 +27,7 @@ const FBAuth = require('./util/FBAuth')
 const { db } = require('./util/admin')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
 // scream routes
 app.get('/screams', getAllScreams)
